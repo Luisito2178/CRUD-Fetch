@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD API REST FETCH</title>
+</head>
+<body>
+    <h1>CRUD API REST FETCH</h1>
+    <section class="crud">
+        <article>
+            <h2 class="crud-title">Agregar Ninjas</h2>
+            <form action="" class="crud-form">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <br>
+                <br>
+                <input type="text" name="aldea" placeholder="Aldea" required>
+                <br>
+                <br>
+                <input type="submit" value="Enviar">
+                <input type="hidden" name="action">
+            </form>
+        </article>
+        <article>
+            <h2>Ver Ninjas</h2>
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Aldea</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </article>
+    </section>
+    <template id="crud-template">
+        <tr>
+            <td class="name"></td>
+            <td class="aldea"></td>
+            <td>
+                <button class="edit">Editar</button>
+                <button class="delete">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+    <script>
+        const d = document,
+            $table = d.querySelector(".crud-table"),
+            $form = d.querySelector(".crud-form"),
+            $title = d.querySelector(".crud-title"),
+            $template = d.getElementById("crud-template").content,
+            $fragment = d.createDocumentFragment();
+
+            // Funcion asincrona que traera todos los elementos 
+            const getAll = async() =>{
+                try{
+                    let res = await fetch("http://localhost:5000/ninjas"), // fetch tiene dos parametros la URL y otra opcion que podemos usar 
+                    json = await res.json(); // convertir la respuesta a json
+                    
+                    if(!res.ok){ // si la respuesta de OK no es satisfactoria (o sea verdadera) entonces vamos a usar throw para llamar al catch
+                        throw{status: res.status, statusText: res.statusText};
+                    }
+
+                    console.log(json);
+                    json.forEach(element => {
+                        $template.querySelector(".name").textContent = el.nombre;
+                        $template.querySelector(".aldea").textContent = el.aldea;
+                        $template.querySelector(".edit").database.id = el.id;
+                        $template.querySelector(".edit").database.nombre = el.nombre;
+                        $template.querySelector(".edit").database.aldea = el.aldea;
+                        $template.querySelector(".delete").database.id = el.id;
+
+                        let $clone = d.importNode($template, true);
+                        $fragment.appendChild($clone)
+                    });
+                    $table.querySelector("tbody").appendChild($fragment);
+
+                }
+                catch(error){
+                    let message = error.statusText || "Ocurrio un error inesperado"
+                        $table.insertAdjacentElement("afterend", `<p><b>Error ${error.status}:${error.message} </b></p>`);
+                }
+            }
+
+            d.addEventListener("DOMContentLoaded",getAll);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+  "ninjas": [
+    {
+      "id": 1,
+      "nombre": "Naruto",
+      "aldea": "Aldea oculta de la hoja"
+    },
+    {
+      "id": 2,
+      "nombre": "Gaara",
+      "aldea": "Aldea Oculta de la Arena"
+    },
+    {
+      "id": 3,
+      "nombre": "Rock Lee",
+      "aldea": "Aldea oculta de la hoja"
+    },
+    {
+      "id": 4,
+      "nombre": "Itachi",
+      "aldea": "Aldea Oculta de la Hoja"
+    },
+    {
+      "id": 5,
+      "nombre": "Jiraiya",
+      "aldea": "Aldea Oculta de la Hoja"
+    }
+  ],
+  "hokages": [
+    {
+      "id": 1,
+      "nombre": "Hashirama Senju",
+      "Kekkei Genkai": "Madera"
+    },
+    {
+      "id": 2,
+      "nombre": "Tobirama Senju",
+      "Kekkei Genkai": "Ninguno"
+    },
+    {
+      "id": 3,
+      "nombre": "Hiruzen Sarutobi",
+      "Kekkei Genkai": "Ninguno"
+    },
+    {
+      "id": 4,
+      "nombre": "Minato Namikaze",
+      "Kekkei Genkai": "Ninguno"
+    },
+    {
+      "id": 5,
+      "nombre": "Tsunade",
+      "Kekkei Genkai": "Ninguno"
+    },
+    {
+      "id": 6,
+      "nombre": "Kakashi Hatake",
+      "Kekkei Genkai": "Sharingan"
+    },
+    {
+      "id": 7,
+      "nombre": "Naruto Uzumaki",
+      "Kekkei Genkai": "Imán"
+    }
+  ]
+}
