@@ -11,7 +11,7 @@
     <section class="crud">
         <article>
             <h2 class="crud-title">Agregar Ninjas</h2>
-            <form action="" class="crud-form">
+            <form class="crud-form">
                 <input type="text" name="nombre" placeholder="Nombre" required>
                 <br>
                 <br>
@@ -19,7 +19,7 @@
                 <br>
                 <br>
                 <input type="submit" value="Enviar">
-                <input type="hidden" name="action">
+                <input type="hidden" name="id">
             </form>
         </article>
         <article>
@@ -57,7 +57,7 @@
             // Funcion asincrona que traera todos los elementos 
             const getAll = async() =>{
                 try{
-                    let res = await fetch("http://localhost:5000/ninjas"), // fetch tiene dos parametros la URL y otra opcion que podemos usar 
+                    let res = await fetch("http://localhost:5555/ninjas"), // fetch tiene dos parametros la URL y otra opcion que podemos usar 
                     json = await res.json(); // convertir la respuesta a json
                     
                     if(!res.ok){ // si la respuesta de OK no es satisfactoria (o sea verdadera) entonces vamos a usar throw para llamar al catch
@@ -65,7 +65,7 @@
                     }
 
                     console.log(json);
-                    json.forEach(element => {
+                    json.forEach(el => {
                         $template.querySelector(".name").textContent = el.nombre;
                         $template.querySelector(".aldea").textContent = el.aldea;
                         $template.querySelector(".edit").database.id = el.id;
@@ -81,7 +81,7 @@
                 }
                 catch(error){
                     let message = error.statusText || "Ocurrio un error inesperado"
-                        $table.insertAdjacentElement("afterend", `<p><b>Error ${error.status}:${error.message} </b></p>`);
+                    $table.insertAdjacentHTML("afterend", `<p><b>Error ${error.status}:${error.message} </b></p>`);
                 }
             }
 
