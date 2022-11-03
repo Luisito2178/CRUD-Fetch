@@ -6,3 +6,5 @@ Error en la linea de codigo 84, solucionado, siguiendo la busqueda de nuevos err
 
 Correccion de error en la linea 68 no se accedia a las propiedades de la iteracion con element, cambiado por el
 
+Error on the line  71,72,73 y 74  "database" is not the same as "dataset"
+
