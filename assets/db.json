@@ -24,6 +24,11 @@
       "id": 5,
       "nombre": "Jiraiya",
       "aldea": "Aldea Oculta de la Hoja"
+    },
+    {
+      "nombre": "Luis",
+      "aldea": "Aldea oculta de la hoja",
+      "id": 6
     }
   ],
   "hokages": [

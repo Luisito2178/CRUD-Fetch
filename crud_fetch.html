@@ -87,6 +87,39 @@
 
             d.addEventListener("DOMContentLoaded",getAll);
 
+            d.addEventListener("submit", async e=>{
+                if(e.target === $form){
+                    e.preventDefault();
+
+                    if(!e.target.id.value){
+                        //CREATE-POST
+                        try{
+                            let options = {
+                                method: "POST",
+                                headers:{
+                                    "Content-type": "application/json; charset=utf-8"
+                                },
+                                body: JSON.stringify({
+                                    nombre: e.target.nombre.value,
+                                    aldea: e.target.aldea.value
+                                })
+                            },
+                            res = await fetch("http://localhost:5555/ninjas", options),
+                            json = await res.json();
+
+                            if(!res.ok){ // si la respuesta de OK no es satisfactoria (o sea verdadera) entonces vamos a usar throw para llamar al catch
+                            throw{status: res.status, statusText: res.statusText};
+                            }
+                        }catch(error){
+                            let message = error.statusText || "Ocurrio un error inesperado"
+                            $form.insertAdjacentHTML("afterend", `<p><b>Error ${error.status}:${error.message} </b></p>`);
+                        }
+                        }else{
+                        //UPDATE-PUT
+                        }
+                }
+            });
+
     </script>
 </body>
 </html>
