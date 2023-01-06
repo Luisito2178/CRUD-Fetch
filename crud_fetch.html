@@ -57,7 +57,7 @@
             // Funcion asincrona que traera todos los elementos 
             const getAll = async() =>{
                 try{
-                    let res = await fetch("http://localhost:5555/ninjas"), // fetch tiene dos parametros la URL y otra opcion que podemos usar 
+                    let res = await fetch("http://localhost:5000/ninjas"), // fetch tiene dos parametros la URL y otra opcion que podemos usar 
                     json = await res.json(); // convertir la respuesta a json
                     
                     if(!res.ok){ // si la respuesta de OK no es satisfactoria (o sea verdadera) entonces vamos a usar throw para llamar al catch
@@ -69,7 +69,7 @@
                         $template.querySelector(".name").textContent = el.nombre;
                         $template.querySelector(".aldea").textContent = el.aldea;
                         $template.querySelector(".edit").dataset.id = el.id;
-                        $template.querySelector(".edit").dataset.nombre = el.nombre;
+                        $template.querySelector(".edit").dataset.name = el.nombre;
                         $template.querySelector(".edit").dataset.aldea = el.aldea;
                         $template.querySelector(".delete").dataset.id = el.id;
 
@@ -99,7 +99,7 @@
                                 headers:{
                                     "Content-type": "application/json; charset=utf-8"
                                 },
-                                body: JSON.stringify({
+                                body: JSON.stringify({ //convertir JSON en modo cadena con stringify
                                     nombre: e.target.nombre.value,
                                     aldea: e.target.aldea.value
                                 })
