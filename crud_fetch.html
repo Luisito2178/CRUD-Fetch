@@ -104,21 +104,55 @@
                                     aldea: e.target.aldea.value
                                 })
                             },
-                            res = await fetch("http://localhost:5555/ninjas", options),
+                            res = await fetch("http://localhost:5000/ninjas", options),
                             json = await res.json();
-
+                            
                             if(!res.ok){ // si la respuesta de OK no es satisfactoria (o sea verdadera) entonces vamos a usar throw para llamar al catch
-                            throw{status: res.status, statusText: res.statusText};
+                                throw{status: res.status, statusText: res.statusText};
                             }
+
+                            location.reload();
                         }catch(error){
                             let message = error.statusText || "Ocurrio un error inesperado"
                             $form.insertAdjacentHTML("afterend", `<p><b>Error ${error.status}:${error.message} </b></p>`);
                         }
                         }else{
                         //UPDATE-PUT
+                        try{
+                            let options = {
+                                method: "PUT",
+                                headers:{
+                                    "Content-type": "application/json; charset=utf-8"
+                                },
+                                body: JSON.stringify({ //convertir JSON en modo cadena con stringify
+                                    nombre: e.target.nombre.value,
+                                    aldea: e.target.aldea.value
+                                })
+                            },
+                            res = await fetch(`http://localhost:5000/ninjas/${e.target.id.value}`, options),
+                            json = await res.json();
+
+                            if(!res.ok){ // si la respuesta de OK no es satisfactoria (o sea verdadera) entonces vamos a usar throw para llamar al catch
+                                throw{status: res.status, statusText: res.statusText};
+                            }
+
+                            location.reload();
+                        }catch(error){
+                            let message = error.statusText || "Ocurrio un error inesperado"
+                            $form.insertAdjacentHTML("afterend", `<p><b>Error ${error.status}:${error.message} </b></p>`);
+                        }
                         }
                 }
             });
+
+            d.addEventListener("click",e =>{
+                if(e.target.matches(".edit")){
+                    $title.textContent = "Editar Ninja";
+                    $form.nombre.value = e.target.dataset.name;
+                    $form.aldea.value = e.target.dataset.aldea;
+                    $form.id.value = e.target.dataset.id;
+                }
+            })
 
     </script>
 </body>

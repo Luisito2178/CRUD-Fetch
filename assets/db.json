@@ -29,6 +29,16 @@
       "nombre": "Luis",
       "aldea": "Aldea oculta de la hoja",
       "id": 6
+    },
+    {
+      "nombre": "as",
+      "aldea": "Alade Oculta de la Arena",
+      "id": 7
+    },
+    {
+      "nombre": "Sasuke",
+      "aldea": "Alade Oculta de la Hoja",
+      "id": 8
     }
   ],
   "hokages": [
